@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'zachatorcodes.github.io',
+    site: 'https://zachatorcodes.github.io',
     base: '/blog',
 });
