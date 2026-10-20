@@ -1,14 +1,15 @@
 ---
-// component import
+import "../styles/global.css";
 import MainHead from "../layouts/MainHead.astro";
-
+import Navigation from "../components/Navigation.astro";
 const { title = "Zach Schwartz", description = "Default Description" } =
-    Astro.props;
+  Astro.props;
 ---
 
 <html lang="en">
-    <MainHead {title} {description} />
-    <body>
-        <slot>Default Text</slot>
-    </body>
+  <MainHead {title} {description} />
+  <body>
+    <Navigation />
+    <slot>Default Text</slot>
+  </body>
 </html>
