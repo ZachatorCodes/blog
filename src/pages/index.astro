@@ -1,7 +1,115 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+
+const links = [
+  { label: "Resume", href: "/Zach-Schwartz-Resume.pdf", primary: true },
+  { label: "GitHub", href: "https://github.com/ZachatorCodes" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/zachatorcodes/" },
+  { label: "Email", href: "mailto:zachatorcodes@gmail.com" },
+];
+
+const projects = [
+  {
+    title: "Habit Bingo",
+    stack: ["SvelteKit", "TypeScript", "PostgreSQL", "Claude Code"],
+    description:
+      "A monthly habit-tracking bingo game for friend groups. Built with Claude Code using design specs, milestone plans and architecture decision records, with 79 Vitest and Playwright test files running in GitHub Actions CI.",
+    href: "https://habit-bingo-v2.vercel.app",
+    linkLabel: "Live site",
+  },
+  {
+    title: "Assembler & Virtual Machine",
+    stack: ["C"],
+    description:
+      "An assembler that encodes assembly code to binary in simulated memory and runs it. Grew over 9 milestones to support conditional jumps, I/O, loops, and functions with parameters and return values.",
+    href: "https://github.com/ZachatorCodes/csc2025-assembler",
+    linkLabel: "Code",
+  },
+  {
+    title: "Northern Colorado Grotto Website",
+    stack: ["React", "React Router", "Tailwind CSS", "DaisyUI"],
+    description:
+      "A single-page website for the Northern Colorado Grotto, a chapter of the National Speleological Society, where I serve as secretary.",
+    href: "https://zachatorcodes.github.io/noco-grotto/",
+    linkLabel: "Live site",
+  },
+];
 ---
 
-<MainLayout title="Home" description="Landing page for Zach's website">
-  <p>Home Page</p>
+<MainLayout
+  title="Zach Schwartz | Software Developer"
+  description="Zach Schwartz: Computer Science student at Colorado State University, web developer, and STEM instructor in Fort Collins, Colorado."
+>
+  <main class="mx-auto max-w-4xl px-4 py-12">
+    <section class="py-8">
+      <p class="text-base-content/70">Fort Collins, Colorado</p>
+      <h1 class="mt-2 text-4xl font-bold sm:text-5xl">Zach Schwartz</h1>
+      <p class="mt-4 max-w-2xl text-lg">
+        Computer Science student at Colorado State University and part-time web
+        developer, looking for a Summer 2027 software engineering internship. I
+        build full-stack apps in JavaScript, TypeScript, Java, C++ and Ruby.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class:list={["btn", link.primary ? "btn-primary" : "btn-outline"]}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="projects" class="scroll-mt-20 py-8">
+      <h2 class="text-2xl font-bold">Projects</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        {
+          projects.map((project) => (
+            <article class="card bg-base-200">
+              <div class="card-body">
+                <h3 class="card-title">{project.title}</h3>
+                <div class="flex flex-wrap gap-1">
+                  {project.stack.map((tech) => (
+                    <span class="badge badge-outline badge-sm">{tech}</span>
+                  ))}
+                </div>
+                <p class="text-sm">{project.description}</p>
+                <div class="card-actions mt-2 justify-end">
+                  <a href={project.href} class="link link-primary">
+                    {project.linkLabel}
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="about" class="scroll-mt-20 py-8">
+      <h2 class="text-2xl font-bold">About</h2>
+      <div class="mt-4 max-w-2xl space-y-4">
+        <p>
+          I'm working toward a B.S. in Computer Science at Colorado State
+          University (expected May 2028), after earning an Associate of Science
+          with Honors at Front Range Community College. Before that I completed
+          Flatiron School's software engineering bootcamp.
+        </p>
+        <p>
+          I'm currently rebuilding A1 Wildwater's website in Astro as their
+          part-time web developer. I've taught more than 300 STEM lessons in
+          programming, game development and web development to students aged 8
+          to 18, and I was a teaching assistant for Computer Architecture at
+          Front Range.
+        </p>
+        <p>
+          Away from the keyboard, I'm a whitewater rafting trip lead with A1
+          Wildwater and a sales specialist at REI.
+        </p>
+      </div>
+    </section>
+  </main>
 </MainLayout>
